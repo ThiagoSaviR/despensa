@@ -1,4 +1,4 @@
-import { HeaderContainer, Title } from "./styles"
+import { HeaderContainer, Title, Background } from "./styles"
 import BackgroundHeader from "../../img/backgroundHeader.jpg"
 import Menu from "../menu/index"
 
@@ -6,8 +6,8 @@ const Header = () => {
     return (
         <>
             <HeaderContainer>
-                <img src={BackgroundHeader} alt="flowers" />
-                <Title>Despensa</Title>
+                <Background src={BackgroundHeader} alt="flowers" />
+                <Title>Menu Web</Title>
                 <Menu />
             </HeaderContainer>
 

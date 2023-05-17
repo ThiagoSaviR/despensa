@@ -5,6 +5,7 @@ export const MenuContainer = styled.div`
     display: flex;
     justify-content: center;
     margin: 2rem;    
+    z-index: 5;
 
 `;
 

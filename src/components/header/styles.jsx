@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export  const HeaderContainer = styled.div`
     width: 100%;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,14 +23,14 @@ export  const HeaderContainer = styled.div`
 }
 
     
-    img {
-        position: absolute;
-        width: 100%;
-        z-index: -1;
-        opacity: 0.4;
-        
-    }
 `;
+export const Background = styled.img`
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;  
+`;
+
 
 export const Title = styled.h1`
     width: 100%;
