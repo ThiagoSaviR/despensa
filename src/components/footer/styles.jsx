@@ -32,9 +32,9 @@ export const Blackground = styled.img`
 `;
 
 export const TextWrapper = styled.div`
-    width: 25rem;
 `;
 export const Text = styled.h1`
+    width: 100%;
     display: flex;
     justify-content: center;
     color: #d66d6d;
@@ -42,17 +42,10 @@ export const Text = styled.h1`
     margin-top: 2rem;
     font-family: "great vibes";
     transition: 0.5s;
-    cursor: pointer;
-    &:hover {
-        letter-spacing: 1px;
-    }
 `;
 
 export const Author = styled(Text)`
     font-size: 1.5rem;
     justify-content: end;
     margin: 0;
-    &:hover {
-        letter-spacing: 0;
-    }
 `;

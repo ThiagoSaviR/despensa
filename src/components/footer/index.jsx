@@ -1,13 +1,19 @@
 import { FooterContainer, Blackground, Text, Author, TextWrapper } from "./styles";
 import BgImage from "../../img/backgroundHeader.jpg"
 
+import Quotes from "../../api/quotes";
+
 const Footer = () => {
+
+    const quoteData = Quotes();
+   
+
     return (
         <FooterContainer>
             <Blackground src={BgImage} alt="flowers" />
             <TextWrapper>
-                <Text>" Uma mensagem bonita todo dia! "</Text>
-                <Author>Ele mesmo</Author>
+                <Text>" {quoteData.text} "</Text>
+                <Author>{quoteData.author ? "Unknown" : quoteData.author}</Author>
             </TextWrapper>
         </FooterContainer>
     )

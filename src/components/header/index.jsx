@@ -7,7 +7,7 @@ const Header = () => {
         <>
             <HeaderContainer>
                 <Background src={BackgroundHeader} alt="flowers" />
-                <Title>Menu Web</Title>
+                <Title>Daily Menu</Title>
                 <Menu />
             </HeaderContainer>
 

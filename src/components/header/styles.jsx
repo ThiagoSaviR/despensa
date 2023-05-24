@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export  const HeaderContainer = styled.div`
     width: 100%;
-    height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,6 +39,6 @@ export const Title = styled.h1`
     margin-top: 2rem;
     color: #d66d6d;
     font-family: 'great vibes';
-    font-size: 10rem;
+    font-size: 6rem;
     font-weight: 100;
 `;
