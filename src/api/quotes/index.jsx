@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
 
 const Quotes = () => {
-
     const url = "https://type.fit/api/quotes";
-        let data;
-        const numAleatorio = () => Math.floor(Math.random() * data.length) + 1;
-    
-        const [citacoes, setCitacoes] = useState({});
-    
-        useEffect(() => {
-            getCitacoes();
-        }, []);
-    
-        async function getCitacoes() {
-            try {
-                const res = await fetch(url);
-                data = await res.json();
-                setCitacoes(data[numAleatorio()]);
-            } catch (err) {
-                console.log(err);
-            }
-        }
+    const [quotes, setQuotes] = useState({});
 
-        return citacoes;
+    async function getQuotes() {
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            const num = () => {
+                return Math.floor(Math.random() * data.length) + 1;
+            }
+            setQuotes(data[num()]);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getQuotes();
+    }, []);
+
+    return quotes;
 }
- export default Quotes;
+export default Quotes;
