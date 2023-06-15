@@ -18,7 +18,7 @@ const Menu = () => {
                 <span>Lista de Compras</span>
             </Btn>
             <Btn onClick={() => navigate("/recipes")}>
-                <span>Receitas</span>
+                <span>Livro de Receitas</span>
             </Btn>
             <Btn onClick={() => navigate("/recipeRegister")}>
                 <span>Cadastrar Receitas</span>

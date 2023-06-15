@@ -43,8 +43,8 @@ export const Btn = styled.div`
         border-bottom-width: 1px;
         border-top-style: solid;
         border-bottom-style: solid;
-        border-top-color:  #d66d6d;;
-        border-bottom-color:  #d66d6d;;
+        border-top-color:  #d66d6d;
+        border-bottom-color:  #d66d6d;
         transform: scale(0.1, 1);
     }
     &:hover span {

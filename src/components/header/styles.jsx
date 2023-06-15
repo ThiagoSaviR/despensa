@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export  const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -41,4 +41,5 @@ export const Title = styled.h1`
     font-family: 'great vibes';
     font-size: 6rem;
     font-weight: 100;
+    cursor: pointer;
 `;

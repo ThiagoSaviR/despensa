@@ -10,8 +10,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Paytone One', cursive;
   }
   body {
-    width: 100%;
+    position: relative;
     height: 100%;
+    width: 100%;
   }
 `;
 

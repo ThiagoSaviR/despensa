@@ -1,9 +1,8 @@
-import GlobalStyle from "./components/styles/globalStyles";
+import GlobalStyle from "./styles/globalStyles";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Router from "./routes/router"
-import { BrowserRouter, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
 

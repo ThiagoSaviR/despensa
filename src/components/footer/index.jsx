@@ -13,7 +13,7 @@ const Footer = () => {
             <Blackground src={BgImage} alt="flowers" />
             <TextWrapper>
                 <Text>" {quoteData.text} "</Text>
-                <Author>{quoteData.author ? "Unknown" : quoteData.author}</Author>
+                <Author>{quoteData.author ? quoteData.author : "Unknown"}</Author>
             </TextWrapper>
         </FooterContainer>
     )
