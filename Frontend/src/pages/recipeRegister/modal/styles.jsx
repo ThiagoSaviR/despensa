@@ -58,6 +58,7 @@ export const WrapperIngredients = styled.div`
 
 export const Image = styled.img`
     width: 15rem;
+    border-radius: 10px;
 `;
 
 export const Text = styled.p`
