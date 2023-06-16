@@ -29,7 +29,7 @@ const RegisterRecipe = () => {
             { qtd: "", type: "", ingredient: "" }
         ],
         image: "",
-        modoPreparo: "",
+        preparation: "",
     }
 
     const [values, setValues] = useState(initialValues);

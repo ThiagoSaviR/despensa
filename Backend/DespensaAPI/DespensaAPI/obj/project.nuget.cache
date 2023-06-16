@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "GSV5X7OoQ9bXIZIefB5AkuGoMFutdZXJZh/cY2i4Ycaw573KO2gVmK2VWqQ4LcpHlKZlavvaBZ5KNFgqYOvVdQ==",
+  "success": true,
+  "projectFilePath": "C:\\dev\\projetoDespensa\\despensa\\Backend\\DespensaAPI\\DespensaAPI\\DespensaAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\thiagosavi_frwk\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\thiagosavi_frwk\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\thiagosavi_frwk\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\thiagosavi_frwk\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\thiagosavi_frwk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\thiagosavi_frwk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
