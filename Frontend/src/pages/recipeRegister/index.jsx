@@ -154,7 +154,7 @@ const RegisterRecipe = () => {
                             type="text"
                             placeholder="Modo de preparo"
                             name="modoPreparo"
-                            value={values.modoPreparo}
+                            value={values.preparation}
                             onChange={handleChange}
                         />
                     </Wrapper>
