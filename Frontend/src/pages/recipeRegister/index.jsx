@@ -14,19 +14,11 @@ const RegisterRecipe = () => {
 
     const inputRef = useRef(null);
 
+    const ingredient = { qtd: 0, type: "", ingredientName: "" };
     const initialValues = {
         name: "",
         ingredients: [
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" },
-            { qtd: "", type: "", ingredient: "" }
+            ingredient,
         ],
         image: "",
         preparation: "",
@@ -37,7 +29,7 @@ const RegisterRecipe = () => {
     const handleChange = (event, i) => {
         const { name, value } = event.target;
 
-        if (name === "qtd" || name === "type" || name === "ingredient") {
+        if (name === "qtd" || name === "type" || name === "ingredientName") {
             setValues((prevValues) => {
                 const updatedIngredients = [...prevValues.ingredients];
                 const updateIngredient = {
@@ -81,15 +73,12 @@ const RegisterRecipe = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+        console.log(values);
     }
 
     const moreIngredients = () => {
-        if (ingredientNumber < 10) {
-            setIngredientNumber(ingredientNumber + 1);
-        }
-        if (ingredientNumber === 10) {
-            window.confirm("Você chegou ao máximo de ingredientes")
-        }
+        setIngredientNumber(ingredientNumber + 1);
+        initialValues.ingredients.push(ingredient);
     }
 
     return (
@@ -130,8 +119,8 @@ const RegisterRecipe = () => {
                                         <Input
                                             type="text"
                                             placeholder="ingrediente"
-                                            name="ingredient"
-                                            value={values.ingredients[i]?.ingredient || ""}
+                                            name="ingredientName"
+                                            value={values.ingredients[i]?.ingredientName || ""}
                                             onChange={(e) => handleChange(e, i)}
                                         />
                                     </Wrapper>
@@ -153,7 +142,7 @@ const RegisterRecipe = () => {
                         <Textarea
                             type="text"
                             placeholder="Modo de preparo"
-                            name="modoPreparo"
+                            name="preparation"
                             value={values.preparation}
                             onChange={handleChange}
                         />

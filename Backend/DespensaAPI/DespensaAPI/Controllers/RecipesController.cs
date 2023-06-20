@@ -94,6 +94,7 @@ namespace DespensaAPI.Controllers
                 {
                     return NotFound("Receita não localizado...");
                 }
+                _context.Ingredients.RemoveRange(recipe.Ingredients);
                 _context.Recipes.Remove(recipe);
                 _context.SaveChanges();
 

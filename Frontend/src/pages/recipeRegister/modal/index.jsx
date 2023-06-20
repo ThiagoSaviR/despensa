@@ -12,6 +12,8 @@ import {
     WrapperIngredients
 } from "./styles";
 import Button from "../../../components/button";
+import { PostRecipe } from "../../../api/recipes";
+
 
 const Modal = (props) => {
     const ingredients = props.values.ingredients;
@@ -32,7 +34,7 @@ const Modal = (props) => {
                                     return
                                 } else {
                                     return (
-                                        <p>{`${ingredient.qtd} (${ingredient.type}) ${ingredient.ingredient}`}</p>
+                                        <p key={ingredient.ingredientName}>{`${ingredient.qtd} (${ingredient.type}) ${ingredient.ingredientName}`}</p>
                                     )
                                 }
                             })}
@@ -40,14 +42,12 @@ const Modal = (props) => {
                     </WrapperContent>
                     <WrapperText>
                         <TitleContent>Modo de Preparo</TitleContent>
-                        <Text>{props.values.modoPreparo}</Text>
+                        <Text>{props.values.preparation}</Text>
                     </WrapperText>
-                <WrapperContent>
-                    <Button text="Voltar" onClick={props.closeModal}/>
-                    <Button text="Confirmar"onClick={() => {
-                        window.confirm("enviado")
-                    }}/>
-                </WrapperContent>
+                    <WrapperContent>
+                        <Button text="Voltar" onClick={props.closeModal} />
+                        <Button text="Confirmar" onClick={() => PostRecipe(props.values)} />
+                    </WrapperContent>
                 </ModalContent>
             </ModalContainer>
         </>
