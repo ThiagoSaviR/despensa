@@ -14,8 +14,11 @@ import {
 import Button from "../../../components/button";
 import { PostRecipe } from "../../../api/recipes";
 
+import { useNavigate } from "react-router-dom";
+
 
 const Modal = (props) => {
+    const navigate = useNavigate();
     const ingredients = props.values.ingredients;
 
     return (
@@ -30,8 +33,10 @@ const Modal = (props) => {
                         <WrapperIngredients>
                             <TitleContent>Ingredientes</TitleContent>
                             {ingredients.map(ingredient => {
-                                if (ingredient.qtd === "") {
-                                    return
+                                if (ingredient.qtd === 0) {
+                                    return (
+                                        <p key={ingredient.ingredientName}>sem ingrediente aqui</p>
+                                    )
                                 } else {
                                     return (
                                         <p key={ingredient.ingredientName}>{`${ingredient.qtd} (${ingredient.type}) ${ingredient.ingredientName}`}</p>
@@ -46,7 +51,14 @@ const Modal = (props) => {
                     </WrapperText>
                     <WrapperContent>
                         <Button text="Voltar" onClick={props.closeModal} />
-                        <Button text="Confirmar" onClick={() => PostRecipe(props.values)} />
+                        <Button text="Confirmar" onClick={() => {
+                            PostRecipe(props.values);
+                            navigate("/recipes");
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth",
+                              });
+                        }} />
                     </WrapperContent>
                 </ModalContent>
             </ModalContainer>

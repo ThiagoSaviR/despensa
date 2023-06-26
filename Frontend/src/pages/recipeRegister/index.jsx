@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FormContainer, Wrapper, WrapperInputSelect, Title, Form } from "./styles"
 import Input from "../../components/Input";
 import Select from "../../components/select";
@@ -73,7 +73,6 @@ const RegisterRecipe = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(values);
     }
 
     const moreIngredients = () => {

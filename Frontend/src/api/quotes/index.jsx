@@ -5,7 +5,7 @@ const Quotes = () => {
     const baseUrl = "https://type.fit/api/quotes";
     const [quotes, setQuotes] = useState([]);
 
-    async function getQuotes() {
+    const getQuotes = async () => {
         try {
             const response = await axios.get(baseUrl);
             const randomIndex = Math.floor(Math.random() * response.data.length)

@@ -11,6 +11,7 @@ namespace DespensaAPI.Models
         public List<Ingredient>? Ingredients { get; set; }
         public string? Preparation { get; set; }
         public string? Image { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
     }
 
     public class Ingredient

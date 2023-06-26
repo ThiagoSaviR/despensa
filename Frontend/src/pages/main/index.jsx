@@ -1,43 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 
-const FormularioTelefone = () => {
-  const [telefones, setTelefones] = useState([""]);
-
-  const adicionarTelefone = () => {
-    setTelefones([...telefones, ""]);
-  };
-
-  const handleChangeTelefone = (index, event) => {
-    const novosTelefones = [...telefones];
-    novosTelefones[index] = event.target.value;
-    setTelefones(novosTelefones);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Realizar ação com os telefones, como enviar para um servidor
-    console.log(telefones);
-  };
+const Main = () => {
 
   return (
-    <form onSubmit={handleSubmit}>
-      {telefones.map((telefone, index) => (
-        <div key={index}>
-          <input
-            type="tel"
-            value={telefone}
-            onChange={(event) => handleChangeTelefone(index, event)}
-            placeholder="Telefone"
-          />
-        </div>
-      ))}
-      <button type="button" onClick={adicionarTelefone}>
-        +
-      </button>
-      <br /><br />
-      <input type="submit" value="Enviar" />
-    </form>
+    <>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+      <h1>Main</h1>
+    </>
   );
 };
 
-export default FormularioTelefone;
+export default Main;
