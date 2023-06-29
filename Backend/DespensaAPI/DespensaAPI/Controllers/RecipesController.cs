@@ -41,18 +41,31 @@ namespace DespensaAPI.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Recipes>> GetRecipes()
+        [HttpGet("skip{skip:int}/take{take:int}")]
+        public async Task<IActionResult> GetRecipes(
+            [FromServices] AppDbContext context,
+            int skip = 0,
+            int take = 10)
         {
 
             try
             {
-                var recipes = _context.Recipes.Include(r => r.Ingredients).AsNoTracking().ToList();
-                if (recipes is null)
+                var total = await context.Recipes.CountAsync();
+                var recipes = context.Recipes
+                    .Include(r => r.Ingredients)
+                    .AsNoTracking()
+                    .ToList()
+                    .Skip(skip)
+                    .Take(take);
+                if (!recipes.Any())
                 {
                     return NotFound("produtos não encontrados...");
                 }
-                return recipes;
+                return Ok(new
+                {
+                    total,
+                    recipes
+                });
             }
             catch (Exception)
             {

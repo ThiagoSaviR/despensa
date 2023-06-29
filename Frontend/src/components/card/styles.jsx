@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin: 1rem 0;
 `;
 
 export const Card = styled.div`

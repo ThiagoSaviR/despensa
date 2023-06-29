@@ -14,7 +14,7 @@ export const StyledInput = styled.input`
     outline: none;
     border: none;
     border-radius: 1.75rem;
-    filter: drop-shadow(-2px 2px 2px #00000042);
+    filter: drop-shadow(-1px 1px 5px #00000061);
     padding: 1rem;
     font-size: 1rem;
     text-align: center;

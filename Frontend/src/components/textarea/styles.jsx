@@ -9,6 +9,8 @@ export const StyledTextarea = styled.textarea`
     resize: none;
     color: #d66d6d;
     font-size: 1rem;
+    filter: drop-shadow(-1px 1px 5px #00000061);
+
     &::placeholder{
         color: #d66d6d;
     }

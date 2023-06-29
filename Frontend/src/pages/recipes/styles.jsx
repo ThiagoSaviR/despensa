@@ -6,13 +6,17 @@ export const RecipeContainer = styled.div`
     align-items: center;
     flex-direction: column;
     margin: 3rem;
-`;
+    `;
 
 export const CardWrapper = styled.div`
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 0rem;
+    border: 2px solid #d66d6d37;
+    background-color: #d66d6d2f;
+    border-radius: 25px;
+    padding: 2rem;
 `;
 
 export const Title = styled.h1`

@@ -18,8 +18,8 @@ export const PostRecipe = async (values) => {
     }
 };
 
-export const GetRecipe = () => {
-    const baseUrl = "https://localhost:7009/api/recipes"
+export const GetRecipe = ({ skip, take }) => {
+    const baseUrl = `https://localhost:7009/api/recipes/skip${skip}/take${take}`
     const [data, setData] = useState([]);
 
     const get = async () => {
@@ -33,7 +33,7 @@ export const GetRecipe = () => {
 
     useEffect(() => {
         get();
-    });
+    }, []);
 
     return data;
 
