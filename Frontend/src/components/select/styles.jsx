@@ -12,7 +12,11 @@ export const StyledSelect = styled.select`
     font-size: 1rem;
     text-align: center;
     color: #d66d6d;
-    padding: .6rem;
+    padding: .4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
 `;
 

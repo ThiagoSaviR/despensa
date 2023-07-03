@@ -113,6 +113,17 @@ const RegisterRecipe = () => {
                                                 name="type"
                                                 value={values.ingredients[i]?.type || ""}
                                                 onChange={(e) => handleChange(e, i)}
+                                                options={[
+                                                    "Selecione...",
+                                                    "Colher de chá",
+                                                    "Colher de sopa",
+                                                    "Xicara de chá",
+                                                    "Quilo",
+                                                    "Grama",
+                                                    "Unidade",
+                                                    "Litro",
+                                                    "ML"
+                                                ]}
                                             />
                                         </WrapperInputSelect>
                                         <Input

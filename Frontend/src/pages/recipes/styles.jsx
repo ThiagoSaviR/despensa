@@ -18,6 +18,22 @@ export const CardWrapper = styled.div`
     border-radius: 25px;
     padding: 2rem;
 `;
+export const InputWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`;
+export const SelectWrapper = styled.div`
+display: flex;
+width: 20rem;
+justify-content: center;
+align-items: center;
+
+`;
+export const Text = styled.p`
+    margin: 1rem;
+`;
 
 export const Title = styled.h1`
     font-family: "great vibes";

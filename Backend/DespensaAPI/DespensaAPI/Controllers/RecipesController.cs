@@ -10,15 +10,11 @@ namespace DespensaAPI.Controllers
     [ApiController]
     public class RecipesController : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public RecipesController(AppDbContext context)
-        {
-            _context = context;
-        }
-
         [HttpPost]
-        public IActionResult CreateRecipe([FromBody] Recipes recipes)
+        public IActionResult CreateRecipe(
+            [FromBody] Recipes recipes, 
+            [FromServices] AppDbContext context
+            )
         {
             try
             {
@@ -27,8 +23,8 @@ namespace DespensaAPI.Controllers
                     return BadRequest();
                 }
 
-                _context.Recipes?.Add(recipes);
-                _context.SaveChanges();
+                context.Recipes?.Add(recipes);
+                context.SaveChanges();
 
                 return new CreatedAtRouteResult("GetRecipe",
                     new { id = recipes.RecipeId }, recipes);
@@ -77,11 +73,14 @@ namespace DespensaAPI.Controllers
 
         [HttpGet("{id:int}", Name = "getRecipe")]
 
-        public ActionResult<Recipes> Get(int id)
+        public ActionResult<Recipes> Get(
+            [FromServices] AppDbContext context,
+            int id
+            )
         {
             try
             {
-                var receita = _context.Recipes.Include(r => r.Ingredients).FirstOrDefault(r => r.RecipeId == id);
+                var receita = context.Recipes.Include(r => r.Ingredients).FirstOrDefault(r => r.RecipeId == id);
                 if (receita is null)
                 {
                     return NotFound("Receita não encontrado...");
@@ -97,19 +96,21 @@ namespace DespensaAPI.Controllers
 
 
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(
+            int id,
+            [FromServices] AppDbContext context)
         {
             try
             {
-                var recipe = _context.Recipes.Include(r => r.Ingredients).FirstOrDefault(r => r.RecipeId == id);
+                var recipe = context.Recipes.Include(r => r.Ingredients).FirstOrDefault(r => r.RecipeId == id);
 
                 if (recipe is null)
                 {
                     return NotFound("Receita não localizado...");
                 }
-                _context.Ingredients.RemoveRange(recipe.Ingredients);
-                _context.Recipes.Remove(recipe);
-                _context.SaveChanges();
+                context.Ingredients.RemoveRange(recipe.Ingredients);
+                context.Recipes.Remove(recipe);
+                context.SaveChanges();
 
                 return Ok(recipe);
             }

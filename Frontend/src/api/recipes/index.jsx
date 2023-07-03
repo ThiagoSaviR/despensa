@@ -20,21 +20,12 @@ export const PostRecipe = async (values) => {
 
 export const GetRecipe = ({ skip, take }) => {
     const baseUrl = `https://localhost:7009/api/recipes/skip${skip}/take${take}`
-    const [data, setData] = useState([]);
 
-    const get = async () => {
-        try {
-            const response = await axios.get(baseUrl);
-            setData(response.data);
-        } catch (error) {
-            console.error(error.response.data);
-        }
-    }
-
-    useEffect(() => {
-        get();
-    }, []);
-
-    return data;
+    return axios.get(baseUrl)
+    .then(response => response.data)
+    .catch(error => {
+      console.error(error.response.data);
+      return [];
+    });
 
 }
