@@ -5,7 +5,8 @@ import {
     CardWrapper,
     ContentWrapper,
     SelectWrapper,
-    Text
+    Text,
+    PageWrapper
 } from "./styles";
 import { GetRecipe } from "../../api/recipes";
 import Card from "../../components/card"
@@ -15,13 +16,14 @@ import Pagination from "../../components/pagination";
 
 const Recipes = () => {
     const initialVAlues = {
-        pesquisa: "",
         recipeQtd: 6,
         currentPage: 1
     }
+
     const [values, setValues] = useState(initialVAlues);
     const [data, setData] = useState([]);
     const [totalRecipes, setTotalRecipes] = useState(0);
+    const [search, setSearch] = useState("");
 
 
     const handleChange = (event) => {
@@ -31,8 +33,8 @@ const Recipes = () => {
             ...prevValues,
             [name]: value,
         }))
-
     }
+
     const handlePageChange = (page) => {
         setValues((prevValues) => ({
             ...prevValues,
@@ -40,11 +42,22 @@ const Recipes = () => {
         }));
     };
 
+    const changeParams = () => {
+        if (search == "") {
+            return {
+                skip: (values.currentPage - 1) * values.recipeQtd,
+                take: values.recipeQtd
+            }
+        } else {
+            return {
+                skip: 0,
+                take: totalRecipes
+            }
+        }
+    }
+
     useEffect(() => {
-        GetRecipe({
-            skip: (values.currentPage - 1) * values.recipeQtd,
-            take: values.recipeQtd
-        })
+        GetRecipe(changeParams())
             .then((data) => {
                 setData(data);
                 setTotalRecipes(data.total);
@@ -53,9 +66,7 @@ const Recipes = () => {
                 console.error(error);
                 setData([]);
             });
-    }, [values.currentPage, values.recipeQtd]);
-
-
+    }, [values.currentPage, values.recipeQtd, search]);
 
     return (
         <>
@@ -77,21 +88,22 @@ const Recipes = () => {
                         <SearchInput
                             type="text"
                             placeholder="Pesquisar receita"
-                            name="pesquisa"
-                            value={values.pesquisa}
-                            onChange={handleChange}
+                            name="search"
+                            value={search}
+                            onChange={(event) => setSearch(event.target.value)}
                         />
                     </ContentWrapper>
-                    <Card values={data} />
-                    <Pagination
-                        onChange={handlePageChange}
-                        current={values.currentPage}
-                        pageSize={values.recipeQtd}
-                        total={totalRecipes}
-                    />
+                    <PageWrapper>
+                        <Card values={data} search={search} />
+                        <Pagination
+                            onChange={handlePageChange}
+                            current={values.currentPage}
+                            pageSize={values.recipeQtd}
+                            total={totalRecipes}
+                        />
+                    </PageWrapper>
                 </CardWrapper>
             </RecipeContainer>
-
         </>
     )
 }

@@ -52,3 +52,10 @@ export const Title = styled.h1`
     color: #d66d6d;
     filter: drop-shadow(-2px 2px 3px #00000057);
 `;
+
+export const PageWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
