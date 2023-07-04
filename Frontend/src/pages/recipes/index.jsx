@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { RecipeContainer, Title, CardWrapper, InputWrapper, SelectWrapper, Text } from "./styles";
+import {
+    RecipeContainer,
+    Title,
+    CardWrapper,
+    ContentWrapper,
+    SelectWrapper,
+    Text
+} from "./styles";
 import { GetRecipe } from "../../api/recipes";
 import Card from "../../components/card"
-import Input from "../../components/Input"
+import SearchInput from "../../components/searchInput"
 import Select from "../../components/select";
-
+import Pagination from "../../components/pagination";
 
 const Recipes = () => {
     const initialVAlues = {
         pesquisa: "",
-        recipeQtd: 6
+        recipeQtd: 6,
+        currentPage: 1
     }
     const [values, setValues] = useState(initialVAlues);
     const [data, setData] = useState([]);
+    const [totalRecipes, setTotalRecipes] = useState(0);
 
 
     const handleChange = (event) => {
@@ -20,26 +29,40 @@ const Recipes = () => {
 
         setValues((prevValues) => ({
             ...prevValues,
-            [name]: value
+            [name]: value,
         }))
 
     }
+    const handlePageChange = (page) => {
+        setValues((prevValues) => ({
+            ...prevValues,
+            currentPage: page
+        }));
+    };
 
     useEffect(() => {
-        GetRecipe({ skip: 0, take: values.recipeQtd })
-            .then((data) => setData(data))
+        GetRecipe({
+            skip: (values.currentPage - 1) * values.recipeQtd,
+            take: values.recipeQtd
+        })
+            .then((data) => {
+                setData(data);
+                setTotalRecipes(data.total);
+            })
             .catch((error) => {
                 console.error(error);
                 setData([]);
             });
-    }, [values.recipeQtd]);
+    }, [values.currentPage, values.recipeQtd]);
+
+
 
     return (
         <>
             <RecipeContainer>
                 <Title>Livro de Receitas</Title>
                 <CardWrapper>
-                    <InputWrapper>
+                    <ContentWrapper>
                         <SelectWrapper>
                             <Text>Exibindo</Text>
                             <Select
@@ -51,15 +74,21 @@ const Recipes = () => {
                             />
                             <Text>receitas</Text>
                         </SelectWrapper>
-                        <Input
+                        <SearchInput
                             type="text"
                             placeholder="Pesquisar receita"
                             name="pesquisa"
                             value={values.pesquisa}
                             onChange={handleChange}
                         />
-                    </InputWrapper>
+                    </ContentWrapper>
                     <Card values={data} />
+                    <Pagination
+                        onChange={handlePageChange}
+                        current={values.currentPage}
+                        pageSize={values.recipeQtd}
+                        total={totalRecipes}
+                    />
                 </CardWrapper>
             </RecipeContainer>
 

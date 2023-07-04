@@ -34,16 +34,15 @@ namespace DespensaAPI.Controllers
                 Console.WriteLine(ex.ToString());
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.ToString());
             }
-
         }
 
         [HttpGet("skip{skip:int}/take{take:int}")]
         public async Task<IActionResult> GetRecipes(
             [FromServices] AppDbContext context,
             int skip = 0,
-            int take = 10)
+            int take = 10
+            )
         {
-
             try
             {
                 var total = await context.Recipes.CountAsync();
@@ -66,9 +65,9 @@ namespace DespensaAPI.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Ocorreu um problema ao tratar sua solicitação...");
+                    "Ocorreu um problema ao tratar sua solicitação..."
+                    );
             }
-
         }
 
         [HttpGet("{id:int}", Name = "getRecipe")]
@@ -93,7 +92,6 @@ namespace DespensaAPI.Controllers
                    "Ocorreu um problema ao tratar sua solicitação...");
             }
         }
-
 
         [HttpDelete("{id:int}")]
         public ActionResult Delete(
@@ -121,7 +119,5 @@ namespace DespensaAPI.Controllers
                    "Ocorreu um problema ao tratar sua solicitação...");
             }
         }
-
-
     }
 }

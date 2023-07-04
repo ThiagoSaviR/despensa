@@ -1,7 +1,8 @@
 import { HeaderContainer, Title, Background } from "./styles"
-import BackgroundHeader from "../../img/backgroundHeader.jpg"
 import Menu from "../menu/index"
 import { useNavigate } from "react-router-dom"
+
+import BackgroundHeader from "../../assets/images/backgroundHeader.jpg"
 
 const Header = () => {
     const navgate = useNavigate()

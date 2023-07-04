@@ -1,5 +1,5 @@
 import { FooterContainer, Blackground, Text, Author, TextWrapper } from "./styles";
-import BgImage from "../../img/backgroundHeader.jpg"
+import BgImage from "../../assets/images/backgroundHeader.jpg"
 
 import Quotes from "../../api/quotes";
 
