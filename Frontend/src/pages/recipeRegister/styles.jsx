@@ -33,3 +33,49 @@ export const Title = styled.h1`
     filter: drop-shadow(-2px 2px 3px #00000057);
 `;
 
+// Modal
+
+export const WrapperContent = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+`;
+
+export const WrapperImage = styled.div`
+width: 100%;
+`;
+
+export const Image = styled.img`
+    width: 15rem;
+    border-radius: 10px;
+`;
+
+export const WrapperIngredients = styled.div`
+    width: 100%;
+`;
+
+export const TitleContent = styled.h1`
+    font-family: "great vibes";
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    color: #d66d6d;
+    font-size: 2rem;
+`;
+
+export const WrapperText = styled(WrapperContent)`
+    flex-direction: column;
+`;
+
+export const Text = styled.p`
+    text-align: justify;
+`;
+
+export const TitleModal = styled.h1`
+    font-family: "great vibes";
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    color: #d66d6d;
+    font-size: 4rem;
+`;

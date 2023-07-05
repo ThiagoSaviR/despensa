@@ -1,16 +1,34 @@
 import { useRef, useState } from "react";
-import { FormContainer, Wrapper, WrapperInputSelect, Title, Form } from "./styles"
+import { useNavigate } from "react-router-dom";
+import {
+    FormContainer,
+    Wrapper,
+    WrapperInputSelect,
+    Title,
+    Form,
+    WrapperContent,
+    WrapperImage,
+    Image,
+    WrapperIngredients,
+    TitleContent,
+    WrapperText,
+    Text
+} from "./styles"
 import Input from "../../components/Input";
 import Select from "../../components/select";
 import Textarea from "../../components/textarea";
 import InputFile from "../../components/inputFile";
 import Button from "../../components/button";
-import Modal from "./modal";
+import Modal from "../../components/modal";
+
+import { PostRecipe } from "../../api/recipes";
 
 const RegisterRecipe = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [ingredientNumber, setIngredientNumber] = useState(0);
+
+    const navigate = useNavigate();
 
     const inputRef = useRef(null);
 
@@ -175,10 +193,53 @@ const RegisterRecipe = () => {
                     </Wrapper>
                 </Form>
             </FormContainer>
+
             {modalIsVisible ? (
-                <Modal values={values} closeModal={() => {
-                    setModalIsVisible(!modalIsVisible)
-                }} />
+                <Modal
+                    title={values.name}
+                    closeModal={() => {
+                        setModalIsVisible(!modalIsVisible)
+                    }}
+                    content={
+                        <>
+                            <WrapperContent>
+                                <WrapperImage>
+                                    <Image src={values.image} alt="Imagem da receita" />
+                                </WrapperImage>
+                                <WrapperIngredients>
+                                    <TitleContent>Ingredientes</TitleContent>
+                                    {values.ingredients.map(ingredient => {
+                                        if (ingredient.qtd === 0) {
+                                            return (
+                                                <p key={ingredient.ingredientName}>sem ingrediente aqui</p>
+                                            )
+                                        } else {
+                                            return (
+                                                <p key={ingredient.ingredientName}>{`${ingredient.qtd} (${ingredient.type}) ${ingredient.ingredientName}`}</p>
+                                            )
+                                        }
+                                    })}
+                                </WrapperIngredients>
+                            </WrapperContent>
+                            <WrapperText>
+                                <TitleContent>Modo de Preparo</TitleContent>
+                                <Text>{values.preparation}</Text>
+                            </WrapperText>
+                            <WrapperContent>
+                                <Button text="Voltar" onClick={() => setModalIsVisible(!modalIsVisible)} />
+                                <Button text="Confirmar" onClick={() => {
+                                    PostRecipe(values);
+                                    navigate("/recipes");
+                                    window.scrollTo({
+                                        top: 0,
+                                        behavior: "smooth",
+                                    });
+                                }} />
+                            </WrapperContent>
+                        </>
+
+                    }
+                />
             ) :
                 null
             }

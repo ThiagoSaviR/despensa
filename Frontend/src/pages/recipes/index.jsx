@@ -16,7 +16,7 @@ import Pagination from "../../components/pagination";
 
 const Recipes = () => {
     const initialVAlues = {
-        recipeQtd: 6,
+        recipeQtd: 8,
         currentPage: 1
     }
 
@@ -43,7 +43,7 @@ const Recipes = () => {
     };
 
     const changeParams = () => {
-        if (search == "") {
+        if (search === "") {
             return {
                 skip: (values.currentPage - 1) * values.recipeQtd,
                 take: values.recipeQtd
@@ -81,7 +81,7 @@ const Recipes = () => {
                                 name="recipeQtd"
                                 value={values.recipeQtd || ""}
                                 onChange={handleChange}
-                                options={[3, 6, 9, 12, 15]}
+                                options={[4, 8, 12, 16, 20]}
                             />
                             <Text>receitas</Text>
                         </SelectWrapper>

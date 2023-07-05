@@ -1,4 +1,4 @@
-import { CardContainer, Card } from "./styles"
+import { CardContainer, Card, Background, Title } from "./styles"
 
 
 const StyledCard = (props) => {
@@ -11,7 +11,8 @@ const StyledCard = (props) => {
                     return (
                         recipe.name.toLowerCase().includes(props.search.toLowerCase()) ? (
                         <Card key={recipe.recipeId}>
-                            <h1>{recipe.name}</h1>
+                            <Background src={recipe.image} alt="Background"/>
+                            <Title>{recipe.name}</Title>
                         </Card>
                         )
                         : null
