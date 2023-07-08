@@ -6,13 +6,17 @@ import {
     ContentWrapper,
     SelectWrapper,
     Text,
-    PageWrapper
+    PageWrapper,
+    CardContainer
 } from "./styles";
+
 import { GetRecipe } from "../../api/recipes";
-import Card from "../../components/card"
+
+import Card from "../../components/card";
 import SearchInput from "../../components/searchInput"
 import Select from "../../components/select";
 import Pagination from "../../components/pagination";
+import Modal from "../../components/modals/recipeModal";
 
 const Recipes = () => {
     const initialVAlues = {
@@ -24,7 +28,8 @@ const Recipes = () => {
     const [data, setData] = useState([]);
     const [totalRecipes, setTotalRecipes] = useState(0);
     const [search, setSearch] = useState("");
-
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [modalRecipe, setModalRecipe] = useState();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -94,7 +99,23 @@ const Recipes = () => {
                         />
                     </ContentWrapper>
                     <PageWrapper>
-                        <Card values={data} search={search} />
+                        <CardContainer>
+                            {data.recipes?.map(recipe => {
+                                return (
+                                    recipe.name.toLowerCase().includes(search.toLowerCase()) ? (
+                                        <Card
+                                            key={recipe.recipeId}
+                                            values={recipe}
+                                            onClick={() => {
+                                                setModalIsVisible(!modalIsVisible);
+                                                setModalRecipe(recipe)
+                                            }
+                                            }
+                                        />
+                                    ) : null
+                                )
+                            })}
+                        </CardContainer>
                         <Pagination
                             onChange={handlePageChange}
                             current={values.currentPage}
@@ -104,6 +125,15 @@ const Recipes = () => {
                     </PageWrapper>
                 </CardWrapper>
             </RecipeContainer>
+
+            {modalIsVisible ? (
+                <Modal
+                    modalType="Edit/del"
+                    data={modalRecipe}
+                    setModalIsVisible={setModalIsVisible}
+                    modalIsVisible={modalIsVisible}
+                />
+            ) : null}
         </>
     )
 }

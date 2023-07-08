@@ -1,4 +1,5 @@
-import { CardContainer, Card, Background, Title } from "./styles"
+import React from "react";
+import { Card, Background, Title } from "./styles"
 
 
 const StyledCard = (props) => {
@@ -6,22 +7,13 @@ const StyledCard = (props) => {
 
     return (
         <>
-            <CardContainer>
-                {data.recipes?.map(recipe => {
-                    return (
-                        recipe.name.toLowerCase().includes(props.search.toLowerCase()) ? (
-                        <Card key={recipe.recipeId}>
-                            <Background src={recipe.image} alt="Background"/>
-                            <Title>{recipe.name}</Title>
-                        </Card>
-                        )
-                        : null
-                    )
-                })}
-            </CardContainer>
+            <Card key={data.recipeId} onClick={props.onClick}>
+                <Background src={data.image} alt="Background" />
+                <Title>{data.name}</Title>
+            </Card>
         </>
     )
-
 }
 
 export default StyledCard;
+                    

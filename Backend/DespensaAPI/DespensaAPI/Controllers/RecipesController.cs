@@ -82,7 +82,7 @@ namespace DespensaAPI.Controllers
                 var receita = context.Recipes.Include(r => r.Ingredients).FirstOrDefault(r => r.RecipeId == id);
                 if (receita is null)
                 {
-                    return NotFound("Receita não encontrado...");
+                    return NotFound("Receita não encontrada...");
                 }
                 return receita;
             }
@@ -104,7 +104,7 @@ namespace DespensaAPI.Controllers
 
                 if (recipe is null)
                 {
-                    return NotFound("Receita não localizado...");
+                    return NotFound("Receita não localizad...");
                 }
                 context.Ingredients.RemoveRange(recipe.Ingredients);
                 context.Recipes.Remove(recipe);

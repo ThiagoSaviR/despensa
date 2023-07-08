@@ -59,3 +59,11 @@ export const PageWrapper = styled.div`
     align-items: center;
     flex-direction: column;
 `;
+
+export const CardContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    `;

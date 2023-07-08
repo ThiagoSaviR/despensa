@@ -1,9 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 export const PostRecipe = async (values) => {
 
-    const baseUrl = "https://localhost:7009/api/recipes"
+    const baseUrl = "https://localhost:7009/api/recipes";
 
     try {
         const response = await axios.post(baseUrl, values, {
@@ -11,21 +10,36 @@ export const PostRecipe = async (values) => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response.data);
         console.log("Enviado");
+        return response.data;
     } catch (error) {
         console.error(error.response.data);
+        return [];
     }
 };
 
-export const GetRecipe = ({ skip, take }) => {
-    const baseUrl = `https://localhost:7009/api/recipes/skip${skip}/take${take}`
+export const GetRecipe = async ({ skip, take }) => {
+    const baseUrl = `https://localhost:7009/api/recipes/skip${skip}/take${take}`;
 
-    return axios.get(baseUrl)
-    .then(response => response.data)
-    .catch(error => {
-      console.error(error.response.data);
-      return [];
-    });
+    return await axios.get(baseUrl)
+        .then(response => response.data)
+        .catch(error => {
+            console.error(error.response.data);
+            return [];
+        });
 
 }
+
+export const DeleteRecipe = async (id) => {
+    const baseUrl = `https://localhost:7009/api/recipes/${id}`;
+
+    try {
+        const response = await axios.delete(baseUrl);
+        console.log("Delete")
+        return response.data;
+    } catch (error) {
+        console.log(error.response.data);
+        return [];
+    }
+};
+
