@@ -15,9 +15,7 @@ import { DeleteRecipe } from "../../../api/recipes";
 const DeleteModal = (props) => {
     const id = props.id;
 
-    const navigate = useNavigate();
-
-    function handleClick(event) {
+    const handleClick = (event) => {
         if (event.target === event.currentTarget) {
             props.setDeleteModalIsVisible(!props.deleteModalIsVisible);
         }
@@ -36,11 +34,6 @@ const DeleteModal = (props) => {
                                 DeleteRecipe(id);
                                 props.setDeleteModalIsVisible(!props.deleteModalIsVisible)
                                 props.setModalIsVisible(!props.modalIsVisible)
-                                window.location.reload();
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: "smooth",
-                                });
                             }} />
                         </WrapperContent>
                     </WrapperText>

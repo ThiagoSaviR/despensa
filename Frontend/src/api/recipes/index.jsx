@@ -32,7 +32,7 @@ export const GetRecipe = async ({ skip, take }) => {
 
 export const DeleteRecipe = async (id) => {
     const baseUrl = `https://localhost:7009/api/recipes/${id}`;
-
+    
     try {
         const response = await axios.delete(baseUrl);
         console.log("Delete")
